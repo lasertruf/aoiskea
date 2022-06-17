@@ -1,6 +1,8 @@
 <br>
 <br>
 
+<mat-progress-spinner style=" margin:250px 45vw; position:absolute; z-index:2500" *ngIf="loading==true" mode="indeterminate"></mat-progress-spinner>
+
 
   <div *ngIf="submit==false" fxLayout="column"  fxLayoutAlign="space-around center">
     <mat-card fxLayout="column"  >
@@ -32,10 +34,10 @@
     </mat-form-field>
   
     <div fxLayout="row" fxLayoutGap="10px">
-      <mat-form-field appearance="fill">
+      <mat-form-field (click)="selectionChange()"  appearance="fill">
         <mat-label>Favorite food</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let food of foods" [value]="food.value">
+        <mat-select >
+          <mat-option  *ngFor="let food of foods" [value]="food.value">
             {{food.viewValue}}
           </mat-option>
         </mat-select>
@@ -45,7 +47,9 @@
   
     <div fxLayout="row" fxLayoutGap="15px">
       <label  style="font-family:Arial, Helvetica, sans-serif; color: rgb(39, 39, 39); font-size: 18px;">Pick your nationality:</label>
-      <mat-radio-group color="primary" fxLayout="row" fxLayoutGap="15px" aria-label="Select an option">
+      <mat-radio-group 
+       color="primary" fxLayout="row" fxLayoutGap="15px" 
+      aria-label="Select an option">
         <mat-radio-button value="1">Indian</mat-radio-button>
         <mat-radio-button value="2">Other</mat-radio-button>
       </mat-radio-group>

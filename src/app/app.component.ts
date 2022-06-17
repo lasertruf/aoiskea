@@ -13,8 +13,9 @@ interface Food {
 })
 export class AppComponent {
   title = 'aoiskea';
+  loading=false;
   submit=false;
-  foods: Food[] = [
+  foods: any = [
     {value: 'steak-0', viewValue: 'Noodles'},
     {value: 'pizza-1', viewValue: 'Pizza'},
     {value: 'tacos-2', viewValue: 'Tacos'}
@@ -34,5 +35,24 @@ export class AppComponent {
 
   onBack(){
     this.submit=false;
+  }
+  selectionChange(){
+    this.foods = [
+      {value: 'steak-0', viewValue: ''},
+      {value: 'pizza-1', viewValue: ''},
+      {value: 'tacos-2', viewValue: ''}
+    ];;
+    this.loading=true;
+
+    setTimeout(() => {
+      this.foods = [
+        {value: 'steak-0', viewValue: 'Noodles'},
+        {value: 'pizza-1', viewValue: 'Pizza'},
+        {value: 'tacos-2', viewValue: 'Tacos'}
+      ];
+      this.loading=false;
+    }, 1200);
+    console.log("change");
+    
   }
 }
